@@ -1,0 +1,56 @@
+body {
+  background-color: black;
+  font-family: 'Chau Philomene One', sans-serif;
+  /* background-image: url("bg1.jpg"); */
+      background-repeat:no-repeat;
+      /* width: 100%; */
+      background-size: 100%;
+            height: 100%;
+
+
+
+}
+
+.title {
+  font-family: 'Days One', sans-serif;
+  color: black
+}
+
+.center {
+  text-align: center;
+}
+
+.signin-div {
+  margin-top: 10%;
+}
+
+.signin-form {
+  border-radius: 15px;
+  background-color:#ffc0cbbf;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  padding: 20px;
+  padding-bottom: 50px;
+      /* opacity: 0.75; */
+
+}
+
+.form-control {
+  color: #7073a8;
+  font-size: 15px;
+}
+
+.signin-btn {
+  width: 200px;
+  height: 70px;
+  box-shadow: 0 10px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  font-size: 25px;
+  background-color: #7073a8;
+      /* font-weight: bold; */
+
+}
+
+a {
+  font-size: 20px;
+      font-weight: bold;
+
+}

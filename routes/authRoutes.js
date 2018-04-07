@@ -2,6 +2,8 @@ const User = require("../models").User;
 module.exports = function (passport) {
 	const path = require("path");
 	const router = require('express').Router();
+	const vendorController = require("../controllers/vendorController.js");
+
 
 	router.get("/isAuthenticated",function(req,res){
 		if (req.isAuthenticated()){
@@ -23,6 +25,7 @@ module.exports = function (passport) {
 	});
 
 	router.post("/signup",function(req,res){
+		
 		const newUser = req.body;
 		User.register(newUser,newUser.password,(err,user)=>{
 			if (err){ return res.json(err.message); }

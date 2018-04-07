@@ -2,7 +2,7 @@
   "development": {
     "username": "root",
     "password": "root",
-    "database": "uBidMove",
+    "database": "uBidMove_dev",
     "host": "localhost",
     "dialect": "mysql",
     "port": "8889"

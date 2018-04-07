@@ -1,0 +1,19 @@
+
+react-tel-input input[type=tel],
+.react-tel-input input[type=text] {
+    position: relative;
+    font-size: 14px;
+    letter-spacing: .01rem;
+    z-index: 0;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-left: 48px;
+    margin-left: 0;
+    background: #fff;
+    border: 1px solid #cacaca;
+    border-radius: 5px;
+    line-height: 25px;
+    height: 35px;
+    width: 100%;
+    outline: none;
+}

@@ -5,7 +5,6 @@ const PORT = process.env.PORT || 3001;
 const models = require("./models");
 const db = require("./sqlmodels");
 
-console.log(db.sequelize);
 const passport = require("passport");
 const session = require('express-session');
 
@@ -37,7 +36,7 @@ mongoose.connect(
 );
 
 // Start the API server
-db.sequelize.sync({ force: fasle }).then(function () {
+db.sequelize.sync({ force: true }).then(function () {
 app.listen(PORT, function() {
   console.log("🌎  ==> API Server now listening");
 });

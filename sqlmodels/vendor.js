@@ -1,29 +1,51 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
   var vendor = sequelize.define("vendor", {
-    input_user_id: {
-      type: DataTypes.INTEGER,
-      allownull: false,
+    mongoUserID: {
+      type: DataTypes.TEXT,
+      allownull: true,
       validate: {
         len: [1]
       }
     },
-    input_address: {
+
+    username: {
       type: DataTypes.TEXT,
-      allownull: false,
+      allownull: true,
       validate: {
         len: [1]
       }
     },
-    input_phoneNumber: {
+    companyName: {
       type: DataTypes.TEXT,
-      allownull: false,
+      allownull: true,
       validate: {
         len: [1]
       }
     },
-    input_notes: {
+    companyAddress: {
       type: DataTypes.TEXT,
-      allownull: false,
+      allownull: true,
+      validate: {
+        len: [1]
+      }
+    },
+    phoneNumber: {
+      type: DataTypes.TEXT,
+      allownull: true,
+      validate: {
+        len: [1]
+      }
+    },
+    zipcode: {
+      type: DataTypes.TEXT,
+      allownull: true,
+      validate: {
+        len: [1]
+      }
+    },
+    services: {
+      type: DataTypes.TEXT,
+      allownull: true,
       validate: {
         len: [1]
       }
@@ -31,5 +53,5 @@ module.exports = function(sequelize, DataTypes) {
   });
 
   return vendor;
-// module.exports = Vendor_Record;
+  // module.exports = Vendor_Record;
 };
