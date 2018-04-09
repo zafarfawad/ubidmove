@@ -1,7 +1,9 @@
 module.exports = function (sequelize, DataTypes) {
-  var vendor = sequelize.define("vendor", {
+  var Vendor = sequelize.define("Vendor", {
+    
     mongoUserID: {
-      type: DataTypes.TEXT,
+      type: DataTypes.UUID,
+      // primaryKey: true,
       allownull: true,
       validate: {
         len: [1]
@@ -42,16 +44,21 @@ module.exports = function (sequelize, DataTypes) {
       validate: {
         len: [1]
       }
-    },
-    services: {
-      type: DataTypes.TEXT,
-      allownull: true,
-      validate: {
-        len: [1]
-      }
     }
   });
+  
+    Vendor.associate = function(sqlmodels) {
+    // Associating Author with Posts
+    // When an Author is deleted, also delete any associated Posts
+    
+    Vendor.hasMany(sqlmodels.Services, { 
+      // foreignKey: "mongoUserID" 
+         onDelete: "cascade"
 
-  return vendor;
-  // module.exports = Vendor_Record;
+    });
+    // Author.hasMany(models.Post, {
+    // });
+  };
+
+  return Vendor;
 };

@@ -1,29 +1,6 @@
 import React from 'react';
 import "./style.css";
 import {Link} from 'react-router-dom';
-// import "./style/vendor/bootstrap/css/bootstrap.min.css";
-// import "./style/fonts/font-awesome-4.7.0/css/font-awesome.min.css";
-
-// import "./style/fonts/iconic/css/material-design-iconic-font.min.css";
-// import "./style/vendor/animate/animate.css" 
-// import "./style/vendor/css-hamburgers/hamburgers.min.css"
-
-// import "./style/vendor/animsition/css/animsition.min.css"
-// import "./style/vendor/select2/select2.min.css"
-// import "./style/vendor/daterangepicker/daterangepicker.css"
-// import "./style/css/util.css"
-// import "./style/css/main.css"
-
-// import "vendor/jquery/jquery-3.2.1.min.js" 
-// import "vendor/animsition/js/animsition.min.js"
-// import "vendor/bootstrap/js/popper.js"
-
-// import "vendor/bootstrap/js/bootstrap.min.js"
-// import "vendor/select2/select2.min.js"
-// import "vendor/daterangepicker/moment.min.js"
-// import "vendor/daterangepicker/daterangepicker.js"
-// import "vendor/countdowntime/countdowntime.js"
-// import "js/main.js"
 
 const SignIn = (props)=> {
 

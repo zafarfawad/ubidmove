@@ -1,19 +1,18 @@
 import React from 'react';
 import "./style.css";
 import {Link} from 'react-router-dom';
-import  List from "../List"
 import  PhoneNumber from "../PhoneNumber"
 import Tags from "../Tags"
 
 
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import {Label} from "reactstrap";
 
 const SignUp = (props)=> {
   return (
 <div className = "signUpPage">
 <div className = 'signUpTitle'>
       <h1>SIGN UP</h1>
-      <Link to="/">Go to sign in</Link>
+      <Link to="/signin">Go to sign in</Link>
       <form>
         <label>Company Name </label>
         <br />
@@ -39,17 +38,13 @@ const SignUp = (props)=> {
         <br />
         <input style ={{fontSize: 30 +'px'}} name="zipcode" type="text" value={props.zipcode} onChange={props.handleChange} />
         <br />
-        <label>Services Provided</label>
-        <br />
-        <input style ={{fontSize: 30 +'px'}} name="services" type="text" value={props.services} onChange={props.handleChange} />
-        <br />
         < Label for = "PhoneNumber" > phone Number </Label>
-< div class = "PhoneNumber" >
+        < div className = "PhoneNumber" >
         <PhoneNumber handleChange={props.handlePhoneChange} value={props.PhoneNumber} /> 
         </div>
         <br />
       < Label for = "Tags" > Services Provided </Label>
-        <Tags tags={props.tags} suggestions={props.suggestions} handleDelete={props.handleDelete} handleAddition={props.handleAddition}/>
+        <Tags tags={props.tags} suggestions={props.suggestions} handleDelete={props.handleDelete} handleAddition={props.handleAddition} handleInputChange = {props.handleInputChange}/>
         <br/>
         <button type="submit" name="/auth/signup" onClick={props.handleSubmit}>
           Sign Up

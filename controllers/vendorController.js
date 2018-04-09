@@ -11,10 +11,10 @@ module.exports = {
 
   //create a new record for the vendors
   create: function (req, res) {
-
     console.log('sql',req.body)
+
     db
-      .vendor
+      .Vendor
       .create({
         mongoUserID: req.body.authUserId,
         companyName: req.body.companyName,
@@ -24,9 +24,18 @@ module.exports = {
         zipcode: req.body.zipcode, 
         services: req.body.services,
       })
+    
+      .then(req.body.services.forEach(serviceType => {
+    db
+      .Services
+      .create({
+        serviceType: serviceType.name,
+      })
+}))
       .then(dbvendor => res.json(dbvendor))
       .catch(err => res.status(422).json(err));
-  },
+
+},
 
   //find all the records
   findAll: function (req, res) {
@@ -89,4 +98,6 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
+
+
 };

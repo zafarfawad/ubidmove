@@ -47,7 +47,8 @@ const Tags = (props) => {
         tags={props.tags}
         suggestions={props.suggestions}
         handleDelete={props.handleDelete}
-        handleAddition={props.handleAddition} />
+        handleAddition={props.handleAddition} 
+        handleInputChange = {props.handleInputChange} />
     )
   };
 

@@ -10,7 +10,7 @@ import Home from "../../components/Home";
 // const ReactTags = require('react-tag-autocomplete')
 
 
-class Login extends Component {
+class MainPage extends Component {
   state = {
     username: "",
     password: "",
@@ -34,7 +34,7 @@ class Login extends Component {
         { id: 9, name: "Two Bed Apartment"},
         { id: 10, name: "Three Bed Apartment" },
         { id: 11, name: "Houses" },
-        { id: 12, name: "Piano Moving" }
+        { id: 12, name: "Piana Moving" }
     ]    
   };
 
@@ -144,7 +144,7 @@ handlePhoneChange = (value) => {
         <div>
           <Route
             exact
-            path="/signin"
+            path="/"
             render={() => {
               if (loggedIn) {
                 return <Redirect to="/home" />;
@@ -194,7 +194,7 @@ handlePhoneChange = (value) => {
             path="/home"
             render={() => {
               if (!loggedIn) {
-                return <Redirect to="/signin" />;
+                return <Redirect to="/" />;
               } else {
                 return (
                   <Home
@@ -211,4 +211,4 @@ handlePhoneChange = (value) => {
   }
 }
 
-export default Login;
+export default MainPage;

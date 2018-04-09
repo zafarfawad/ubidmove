@@ -1,13 +1,12 @@
 import React from 'react';
 import "./style.css";
 // import {Link} from 'react-router-dom';
-import Dropdown from "react-dropdown";
+// import Dropdown from "react-dropdown";
 import "react-dropdown/style.css";
-import { Button, Form, FormGroup, Label, Input, FormText } from "reactstrap";
+import {FormGroup, Label, Input } from "reactstrap";
 
 
 const List = (props)=> {
-	const options = ["one", "two", "three"];
 	
 	return (
     
