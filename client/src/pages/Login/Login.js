@@ -65,7 +65,6 @@ class Login extends Component {
 
   //entering username and password
   handleChange = event => {
-    console.log(event.target);
     const { name, value } = event.target;
 
     this.setState({

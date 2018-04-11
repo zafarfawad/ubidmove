@@ -4,7 +4,7 @@ module.exports = function (passport) {
 	const vendorController = require("../controllers/vendorController.js");
 
 router
-  .route("/signup")
+  .route("/mover/signup")
 	.post(vendorController.create)
 
 router

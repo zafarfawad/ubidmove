@@ -10,10 +10,10 @@ const ReactTags = require('react-tag-autocomplete')
 //     super(props)
  
 //     this.state = {
-//       tags: [
-//         { id: 1, name: "Loading/Unloading" },
-//         { id: 2, name: "All Apartment Sizes" },
-//       ],
+      // tags: [
+      //   { id: 1, name: "Loading/Unloading" },
+      //   { id: 2, name: "All Apartment Sizes" },
+      // ],
 //       suggestions: [
 //         { id: 3, name: "Packing" },
 //         { id: 4, name: "Unpacking" },
