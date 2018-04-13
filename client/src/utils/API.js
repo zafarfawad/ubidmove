@@ -5,6 +5,12 @@ export default {
   getVendors: function() {
     return axios.get("/api/vendors");
   },
+  getZipCode: function() {
+    return axios.get("/api/vendors/service");
+  },
+  getService: function() {
+    return axios.get("/api/vendors");
+  },
   // Gets the book with the given id
   getVendor: function(id) {
     return axios.get("/api/vendors/" + id);
@@ -18,11 +24,11 @@ export default {
     return axios.post("/api/vendors", updateVendorInfo);
   },
 
-  createVendor: function(newVendorInfo,authUserId) {
-    console.log('createvendor',newVendorInfo, authUserId);
+  createVendor: function(newVendorInfo, authUserId) {
+    console.log("createvendor", newVendorInfo, authUserId);
     newVendorInfo.authUserId = authUserId;
-    return axios.post("/api/signup", newVendorInfo,authUserId);
-  },
+    return axios.post("/api/signup", newVendorInfo, authUserId);
+  }
 
   // getNyData: function(start, end, topic) {
   //   const myBegin = "&begin_date=" + start;

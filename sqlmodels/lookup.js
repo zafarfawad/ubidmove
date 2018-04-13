@@ -7,20 +7,14 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     },
-    serviceType: {
+    value: {
       type: DataTypes.TEXT,
       allownull: false,
       validate: {
         len: [1]
       }
-    },
-    zipCode: {
-      type: DataTypes.INTEGER,
-      allownull: false,
-      validate: {
-        len: [1]
-      }
     }
+
   });
 
 //   Services.associate = function(sqlmodels) {

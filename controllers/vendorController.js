@@ -8,88 +8,105 @@ var routerUser = require("../routes/authRoutes.js");
 
 
 module.exports = {
-
   //create a new record for the vendors
-  create: function (req, res) {
-    console.log('sql',req.body)
+  create: function(req, res) {
+    console.log("sql", req.body);
 
-    db
-      .Vendor
-      .create({
-        mongoUserID: req.body.authUserId,
-        companyName: req.body.companyName,
-        companyAddress: req.body.companyAddress,
-        username: req.body.username,
-        phoneNumber: req.body.phoneNumber,
-        zipcode: req.body.zipcode, 
-        services: req.body.services,
-      })
-    
-      .then(req.body.services.forEach(serviceType => {
-    db
-      .Services
-      .create({
-        serviceType: serviceType.name,
-      })
-}))
+    db.Vendor.create({
+      mongoUserID: req.body.authUserId,
+      companyName: req.body.companyName,
+      companyAddress: req.body.companyAddress,
+      username: req.body.username,
+      phoneNumber: req.body.phoneNumber,
+      zipcode: req.body.zipcode,
+      services: req.body.services
+    })
       .then(dbvendor => res.json(dbvendor))
       .catch(err => res.status(422).json(err));
+  },
 
-},
+  LookUpData: function(req,res){
+
+    console.log(req.body)
+      //  req.body.services.forEach(serviceType => {
+      //   db.Services
+      //   .create({
+      //     serviceType: serviceType.name
+      //   });
+      // })
+      
+  },
 
   //find all the records
-  findAll: function (req, res) {
-    db
-      .vendor
+  findAll: function(req, res) {
+    db.vendor
       .findAll({
         // where: {   input_user_id: req.user.id },
         limit: 5,
-        order: [
-          ["createdAt", "DESC"]
-        ]
+        order: [["createdAt", "DESC"]]
+      })
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  findZipcode: function(req, res) {
+    db.LookUp
+      .findAll({
+        where: { "category":"zipcode" }
+        // limit: 5,
+        // order: [["createdAt", "DESC"]]
+      })
+      // .then(dbModel => res.json(dbModel))
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+
+  findService: function(req, res) {
+    db.LookUp
+      .findAll({
+        where: { category: "service" },
+        order: [["ASC"]]
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 
   //find record by ID
-  findById: function (req, res) {
-    db
-      .vendor
+  findById: function(req, res) {
+    db.vendor
       .findAll({
         where: {
           input_user_id: req.user.id
         },
         limit: 5,
-        order: [
-          ["createdAt", "DESC"]
-        ]
+        order: [["createdAt", "DESC"]]
       })
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 
   //if the vendor decides to add additional phone number or zipcodes
-  update: function (req, res) {
-    db
-      .vendor
-      .update({
-        input_address: req.body.input_address,
-        input_phoneNumber: req.body.input_phoneNumber,
-        input_notes: req.body.input_notes
-      }, {
-        where: {
-          id: req.body.id
+  update: function(req, res) {
+    db.vendor
+      .update(
+        {
+          input_address: req.body.input_address,
+          input_phoneNumber: req.body.input_phoneNumber,
+          input_notes: req.body.input_notes
+        },
+        {
+          where: {
+            id: req.body.id
+          }
         }
-      })
+      )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
 
   //delete a record
-  remove: function (req, res) {
-    db
-      .vendor
+  remove: function(req, res) {
+    db.vendor
       .destroy({
         where: {
           id: req.params.id
@@ -98,6 +115,4 @@ module.exports = {
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   }
-
-
 };

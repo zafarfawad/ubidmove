@@ -1,7 +1,13 @@
 module.exports = function(sequelize, DataTypes) {
   var Services = sequelize.define("Services", {
-
     serviceType: {
+      type: DataTypes.TEXT,
+      allownull: false,
+      validate: {
+        len: [1]
+      }
+    },
+    value: {
       type: DataTypes.TEXT,
       allownull: false,
       validate: {

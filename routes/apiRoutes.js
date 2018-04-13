@@ -4,15 +4,22 @@ module.exports = function (passport) {
 	const vendorController = require("../controllers/vendorController.js");
 
 router
-  .route("/mover/signup")
+  .route("/signup")
 	.post(vendorController.create)
 
 router
-.route("/")
-	.get(vendorController.findAll)
-	.put(vendorController.update)
-	.delete(vendorController.remove)
-	.get(vendorController.findById)
+  .route("/vendors/")
+  .get(vendorController.findAll)
+  .put(vendorController.update)
+  .delete(vendorController.remove)
+  .get(vendorController.findById)
+  .get(vendorController.findService);
+
+ router 
+  .route("/vendors/service")
+
+  .get(vendorController.findZipcode);
+  
 
 
 	return router;
