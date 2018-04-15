@@ -42,5 +42,17 @@ label {
     font-weight: bold;
 }
 .PhoneNumber{
-    font-size: 40px;
+    /* float: left; */
+    margin-left: 0%,
+}
+
+#signUpButton{
+    padding: 25px;
+    font-size: 50px;
+    font-weight: bold;
+    width: 100%;
+    color: aqua;
+    background: gray;
+    cursor: pointer;
+
 }

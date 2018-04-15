@@ -4,6 +4,9 @@ import "./style.css";
 import DropDown from "../DropDown";
 import API from "../../utils/API";
 import MultiSelectReact from "multi-select-react";
+import NavBar from "../NavBar";
+import Carousel from "../Carousel";
+import GoogleAutoComplete from "../GoogleAddress/GoogleAutoComplete";
 
 
 class Home extends Component {
@@ -38,6 +41,10 @@ class Home extends Component {
       service: this.selectService()
     };
 
+  const handleChange = event => {
+    const { name, value } = event.target;
+    this.setState({ [name]: value });
+  };
     // this.state.multiSelect.forEach(function(dropDownItem) {
     //   console.log(dropDownItem.value);
     //   if (dropDownItem.value) {
@@ -131,15 +138,15 @@ class Home extends Component {
     };
     return (
       <div>
-        <h1>You should only see this if you are logged in!</h1>
+        {/* <h1>You should only see this if you are logged in!</h1>
         <p>{this.props.auth.username}</p>
 
         <button onClick={this.props.handleLogout}>Log Out</button>
         <br />
         <br />
-        <br />
+        <br /> */}
 
-      <div style ={{width: 30 +'%'}} >
+      {/* <div style ={{width: 30 +'%'}} >
         <MultiSelectReact
           options={this.state.zipcodes}
           optionClicked={this.optionClicked.bind(this)}
@@ -150,7 +157,10 @@ class Home extends Component {
         <button type="submit" name="/auth/signup" onClick={this.handleSubmit}>
           Sign Up
         </button>      
-		</div>
+    </div> */}
+    
+    <Carousel/>
+
     </div>
     );
   }

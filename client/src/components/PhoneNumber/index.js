@@ -8,11 +8,35 @@ import ReactPhoneInput from "react-phone-input-2";
 
 
 const PhoneNumber = (props)=> {
+
+   const selectedOptionsStyles = {
+  
+    width: "350px",
+    fontSize: "30px",
+    fontsize: "30px",
+    padding: "45px",
+    width: "167%",
+    marginleft: "inherit",
+    borderradius: "0px"
+      
+
+    };
+
+    const buttonStyle = {
+          borderradius: "50px"
+
+    }
 	
 	return <div >
-
       {/* <ReactPhoneInput defaultCountry={"us"} value={props.phoneValue} onChange={props.handleChange} /> */}
-      <ReactPhoneInput style ={{fontSize: 30 +'px'}} name='phoneNumber' defaultCountry={"us"} value={props.value} onChange={props.handleChange} />
+      <ReactPhoneInput 
+      name="phoneNumber" 
+      defaultCountry={"us"} 
+      value={props.value} 
+      onChange={props.handleChange}
+      inputStyle={selectedOptionsStyles}
+      onlyCountries = {["us"]}
+      />
     </div>;
 
 }
