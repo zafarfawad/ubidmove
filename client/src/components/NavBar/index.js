@@ -6,6 +6,8 @@ import IconButton from "material-ui/IconButton";
 import IconMenu from "material-ui/IconMenu";
 import NavMenu from "material-ui/svg-icons/navigation/menu";
 import MenuItem from "material-ui/MenuItem";
+import axios from "axios";
+
 import {
   Toolbar,
   ToolbarGroup,
@@ -17,17 +19,32 @@ class NavBar extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      value: 3
+      value: 1,
+      auth: {
+        userId: "",
+        username: "",
+        isAuthenticated: false
+      }
     };
   }
 
-  handleChange = (event, index, value) => 
-  this.setState
-  (
-    { 
-      value 
-    }
-  );
+  componentWillMount() {
+    axios.get("/auth/isAuthenticated").then(result => {
+      const { userId, isAuthenticated, username } = result.data;
+      this.setState({
+        auth: {
+          userId,
+          isAuthenticated,
+          username
+        }
+      });
+    });
+  }
+
+  handleChange = (event, index, value) =>
+    this.setState({
+      value
+    });
 
   render() {
     return (
@@ -42,9 +59,22 @@ class NavBar extends Component {
               </IconButton>
             }
           >
-            <Link to="/home">
-              <MenuItem value={1} primaryText="Home" />
-            </Link>
+            {this.state.auth.isAuthenticated ? (
+              <Link to="/">
+                <MenuItem value={1} primaryText="Lets move you today" />
+              </Link>
+            ) : (
+              // <Link to="/signIn">
+              //   <MenuItem value={2} primaryText="Already a Mover?" />
+              // </Link>
+              //  <Link to="/">
+              //   <MenuItem value={3} primaryText="Schedule a Move" />
+              // </Link>
+              <Link to="/signUp">
+                <MenuItem value={1} primaryText="Want to become a Mover?" />
+              </Link>
+            )}
+
             {/* <MenuItem value={2} primaryText="Prescriptions" />
             <MenuItem value={3} primaryText="Pharmacies" /> */}
           </IconMenu>
@@ -52,11 +82,19 @@ class NavBar extends Component {
         <ToolbarGroup>
           <ToolbarTitle text="UBidMove" />
           <ToolbarSeparator />
-          <RaisedButton
-            label="Logout"
-            primary={true}
-            onClick={this.props.handleLogout}
-          />
+          {this.state.auth.isAuthenticated ? (
+            <RaisedButton
+              label="Logout"
+              primary={true}
+              onClick={this.props.handleLogout}
+            />
+          ) : (
+            <RaisedButton
+              label="Login"
+              primary={true}
+              onClick={this.props.handleLogout}
+            />
+          )}
         </ToolbarGroup>
       </Toolbar>
     );
@@ -64,74 +102,3 @@ class NavBar extends Component {
 }
 
 export default NavBar;
-
-
-// import React from "react";
-// import { Link } from "react-router-dom";
-
-
-
-// import "./style.css";
-// import {
-//   Collapse,
-//   Navbar,
-//   NavbarToggler,
-//   NavbarBrand,
-//   Nav,
-//   NavItem,
-//   NavLink,
-//   UncontrolledDropdown,
-//   DropdownToggle,
-//   DropdownMenu,
-//   DropdownItem
-// } from "reactstrap";
-
-// // const NavBar = (props)=> {
-// class NavBar extends React.Component {
-//   constructor(props) {
-//     super(props);
-
-//     this.toggle = this.toggle.bind(this);
-//     this.state = {
-//       isOpen: false
-//     };
-//   }
-//   toggle() {
-//     this.setState({
-//       isOpen: !this.state.isOpen
-//     });
-//   }
-//   render() {
-//     return <div>
-//         <Navbar color="light" light expand="md">
-//           <NavbarBrand href="/">uBidMove</NavbarBrand>
-//           <NavbarToggler onClick={this.toggle} />
-//           <Collapse isOpen={this.state.isOpen} navbar>
-//             <Nav className="ml-auto" navbar>
-//               <NavItem>
-//                 <NavLink href="/signup">Go to sign up</NavLink>
-//               </NavItem>
-//               <NavItem>
-//                 <NavLink href="https://github.com/reactstrap/reactstrap">
-//                   GitHub
-//                 </NavLink>
-//               </NavItem>
-//               <UncontrolledDropdown nav inNavbar>
-//                 <DropdownToggle nav caret>
-//                   Options
-//                 </DropdownToggle>
-//                 <DropdownMenu right>
-//                   <DropdownItem>Option 1</DropdownItem>
-//                   <DropdownItem>Option 2</DropdownItem>
-//                   <DropdownItem divider />
-//                   <DropdownItem>Reset</DropdownItem>
-//                 </DropdownMenu>
-//               </UncontrolledDropdown>
-//             </Nav>
-//           </Collapse>
-//         </Navbar>
-//       </div>; 
-// }
-// }
-
-// export default NavBar;

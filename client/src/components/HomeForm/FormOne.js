@@ -1,9 +1,8 @@
 import React from "react";
 import { Input, Row, Col } from "react-materialize";
 import DatePicker1 from "../DatePicker";
-import DropDownHome from "../HomeForm/DropDownHome";
+import TimePicker1 from "../HomeForm/TimePicker";
 import { Card, CardTitle } from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
 
 
 
@@ -22,27 +21,27 @@ const FormOne = (props)=> {
 
         <Row>
           <Col s={8} m={8} l={6} offset="m2 l3">
-            <Input s={8} label="From Address" />
+            <Input s={8} label="From Address" name="fromAddress" value={props.fromAddress} onChange={props.handleChange} />
           </Col>
         </Row>
         <Row />
         <Row>
           <Col s={8} m={8} l={6} offset="m2 l3">
-            <Input s={8} label="To Address" />
+            <Input s={8} label="To Address" name="toAddress" value={props.toAddress} onChange={props.handleChange} />
           </Col>
         </Row>
         <Row />
         <Row />
         <Row>
           <Col s={8} m={8} l={6} offset="m2 l3">
-            <DatePicker1 />
+            <DatePicker1 name="datePicker" value={props.date} onChange={props.handleDateChange} />
           </Col>
         </Row>
         <Row />
         <Row />
         <Row>
           <Col>
-            <DropDownHome />
+            <TimePicker1 name="timePicker" value={props.timePicker} handleChangeTimePicker={props.handleTimeChange} />
           </Col>
         </Row>
         <br />

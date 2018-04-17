@@ -18,14 +18,16 @@ import "./style.css";
 const DatePicker1 = (props) => {
 	return <div>
 
-  <div className="DatePickerClass">
+  <div className="DatePickerClass" style={{ width:'38%'}}>
     <DatePicker
       hintText="Choose Moving Date "
       locale="en-US"
+      value = {props.value}
+      onChange = {props.onChange}
       style={{
-        width: "50%",
+        width: "170%",
         borderBottom: "2px solid #9e9e9e",
-        // backgroundColor: "#ffd699"
+        textAlign:'left'
       }}
     />
   </div>

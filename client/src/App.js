@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
-import './App.css';
-import {BrowserRouter as Router, Route, Redirect} from 'react-router-dom';
+import React, { Component } from "react";
+import "./App.css";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import axios from "axios";
 import API from "./utils/API";
 import MuiThemeProvider from "material-ui/styles/MuiThemeProvider";
@@ -8,6 +8,8 @@ import SignIn from "./components/SignIn";
 import SignUp from "./components/SignUp";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
+import Carousel from "./components/Carousel";
+
 
 class App extends Component {
   state = {
@@ -57,7 +59,6 @@ class App extends Component {
     });
   };
 
-  
   handlePhoneChange = value => {
     this.setState({ phoneNumber: value });
   };
@@ -132,18 +133,31 @@ class App extends Component {
             <div>
               <Route
                 exact
+                path="/"
+                render={() => {
+                  return <div>
+                      <NavBar handleLogout={this.handleLogout} />
+                      <Carousel />
+                    </div>;
+                }}
+              />
+              <Route
+                exact
                 path="/signin"
                 render={() => {
                   if (loggedIn) {
                     return <Redirect to="/home" />;
                   } else {
                     return (
+                      <div>
+                     <NavBar handleLogout={this.handleLogout} />
                       <SignIn
                         handleChange={this.handleChange}
                         handleSubmit={this.handleSubmit}
                         username={this.state.username}
                         password={this.state.password}
                       />
+                      </div>
                     );
                   }
                 }}
@@ -156,6 +170,8 @@ class App extends Component {
                     return <Redirect to="/home" />;
                   } else {
                     return (
+                      <div>
+                      <NavBar handleLogout={this.handleLogout} />
                       <SignUp
                         handleChange={this.handleChange}
                         handlePhoneChange={this.handlePhoneChange}
@@ -173,6 +189,7 @@ class App extends Component {
                         handleAddition={this.handleAddition.bind(this)}
                         handleInputChange={this.handleInputChange}
                       />
+                      </div>
                     );
                   }
                 }}
@@ -186,11 +203,11 @@ class App extends Component {
                   } else {
                     return (
                       <div>
-                      <NavBar handleLogout={this.handleLogout} />
-                      <Home
-                        handleLogout={this.handleLogout}
-                        auth={this.state.auth}
-                      />
+                        <NavBar handleLogout={this.handleLogout} />
+                        <Home
+                          handleLogout={this.handleLogout}
+                          auth={this.state.auth}
+                        />
                       </div>
                     );
                   }
