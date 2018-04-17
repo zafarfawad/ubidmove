@@ -16,11 +16,17 @@
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": null,
-    "database": "database_production",
+    "username": "f6ooif662dg7uule",
+    "password": "cu6tb9txb1hht8px",
+    "database": "ezqam0baptg20fxy",
     "host": "127.0.0.1",
     "dialect": "mysql"
-  }
-
+  },
+    "jawsDB": {
+    "port": 3306,
+    "host": "uc13jynhmkss3nve.cbetxkdyhwsb.us-east-1.rds.amazonaws.com",
+    "user": "f6ooif662dg7uule",
+    "password": "cu6tb9txb1hht8px",
+    "database": "ezqam0baptg20fxy"
+    }
 }
