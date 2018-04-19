@@ -64,15 +64,17 @@ class NavBar extends Component {
                 <MenuItem value={1} primaryText="Lets move you today" />
               </Link>
             ) : (
-              // <Link to="/signIn">
-              //   <MenuItem value={2} primaryText="Already a Mover?" />
-              // </Link>
-              //  <Link to="/">
-              //   <MenuItem value={3} primaryText="Schedule a Move" />
-              // </Link>
+              <div>
+              <Link to="/signIn">
+                <MenuItem value={2} primaryText="Already a Mover?" />
+              </Link>
+               <Link to="/">
+                <MenuItem value={3} primaryText="Schedule a Move" />
+              </Link>
               <Link to="/signUp">
                 <MenuItem value={1} primaryText="Want to become a Mover?" />
               </Link>
+              </div>
             )}
 
             {/* <MenuItem value={2} primaryText="Prescriptions" />
