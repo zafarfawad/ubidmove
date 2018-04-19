@@ -71,9 +71,9 @@ class NavBar extends Component {
                <Link to="/">
                 <MenuItem value={2} primaryText="Schedule a Move" />
               </Link>
-              <Link to="/signUp">
+              {/* <Link to="/signUp">
                 <MenuItem value={3} primaryText="Want to become a Mover?" />
-              </Link>
+              </Link> */}
               </div>
             )}
 
