@@ -1,9 +1,11 @@
 import React from "react";
+import API from "../../utils/API";
 import { Step, Stepper, StepLabel } from "material-ui/Stepper";
 import RaisedButton from "material-ui/RaisedButton";
 import FlatButton from "material-ui/FlatButton";
 import FormOne from "../HomeForm/FormOne";
 import FormTwo from "../HomeForm/FormTwo";
+import moment from "moment";
 
 
 class Carousel extends React.Component {
@@ -17,22 +19,21 @@ class Carousel extends React.Component {
     stairValue: "",
     sizeValue: "",
     itemValue:[],
+    mDate:"",
+    mTime:""
   };
 
   handleStairChange = (event, index, stairValue) => {
-    console.log(stairValue);
     this.setState({ stairValue });
   };
 
   handleSizeChange = (event, index, sizeValue) => {
-    console.log(sizeValue);
     this.setState({
       sizeValue
     });
   };
 
   handleItemChange = (event, index, itemValue) => {
-    console.log(itemValue);
     this.setState({ itemValue });
   };
 
@@ -44,28 +45,51 @@ class Carousel extends React.Component {
   };
 
   handleDate = (event, date) => {
-    console.log(date);
+    
+    const mDate = moment(new Date(date)).format('MMMM Do YYYY');
+    this.setState({ mDate: mDate });
     this.setState({ dateValue: date });
   };
 
   handleTime = (event, time) => {
-    // console.log(time);
+  const mTime = moment(new Date(time)).format("h:mm a");
+  this.setState({ mTime: mTime });
     this.setState({ timeValue: time });
   };
 
-  // handleChangeTimePicker12 = (event, date) => {
-  //   this.setState({ value12: date });
-  // };
+  handleSubmit = event => {
+    // event.preventDefault();
+
+    const moverInfo = {
+        userMoveFromAddress: this.state.fromAddress,
+        userMoveToAddress: this.state.toAddress,
+        userMoveDate: this.state.mDate,
+        userMoveTime: this.state.mTime,
+        userMoveSize: this.state.sizeValue,
+        userMoveItem: this.state.itemValue
+    };
+      this.setState({
+        stepIndex: 0,
+        finished: false,
+        fromAddress: "",
+        toAddress: "",
+        dateValue: {},
+        mDate: "",
+        timeValue: {},
+        mTime:"",
+        stairValue: "",
+        sizeValue: "",
+        itemValue: []
+      });
+
+
+    API.moverOrder(moverInfo)
+      .then(res => console.log("the order has been posted to DB"))
+      .catch(err => console.log(err));
+  };
 
   handleNext = event => {
     event.preventDefault();
-    console.log('fawad',this.state.timeValue);
-
-    // fromAddress: this.state.fromAddress;
-    // toAddress: this.state.toAddress;
-    // dateValue: this.state.dateValue;
-    // timeValue: this.state.timeValue;
-    // stairValue: this.state.stairValue;
 
     const { stepIndex } = this.state;
     this.setState({
@@ -90,7 +114,7 @@ class Carousel extends React.Component {
             <FormOne
               fromAddress={this.state.fromAddress}
               toAddress={this.state.toAddress}
-              date={this.state.dateValue}
+              date={this.state.dateValue}            
               handleChange={this.handleChange}
               handleDateChange={this.handleDate}
               handleTimeChange={this.handleTime}
@@ -123,6 +147,12 @@ class Carousel extends React.Component {
               </span>
               <span>
                 {" "}
+                You are moving on <h5>
+                  {this.state.mDate} at {this.state.mTime}
+                </h5>
+              </span>
+              <span>
+                {" "}
                 You have <h5>{this.state.stairValue}</h5>
               </span>
               <span>
@@ -132,7 +162,7 @@ class Carousel extends React.Component {
               <span>
                 {" "}
                 You have the following items <h5>
-                  {this.state.itemValue}
+                  {" "}{this.state.itemValue}{" "}
                 </h5>
               </span>
             </div>
@@ -162,33 +192,7 @@ class Carousel extends React.Component {
         </Stepper>
         <div style={contentStyle}>
           {finished ? (
-            <div>
-              <p>
-                <a
-                  href="#"
-                  onClick={event => {
-                    event.preventDefault();
-                    this.setState({
-                      stepIndex: 0,
-                      finished: false,
-                      fromAddress: "",
-                      toAddress: "",
-                      dateValue: {},
-                      timeValue: {},
-                      stairValue: "",
-                      sizeValue: "",
-                      itemValue:[],
-                    
-                    });
-                  }}
-                >
-                  Click here
-                </a>{" "}
-                to reset the example.
-                {this.state.fromAddress}
-                {this.state.toAddress}
-              </p>
-            </div>
+            this.handleSubmit()
           ) : (
             <div>
               <div>{this.getStepContent(stepIndex)}</div>

@@ -1,18 +1,12 @@
 import React from "react";
-import { Input, Row, Col } from "react-materialize";
+import {Row, Col } from "react-materialize";
 import { Card, CardTitle } from 'material-ui/Card';
-import TextField from 'material-ui/TextField';
 import CheckBoxesItems from "../CheckBoxes/CheckBoxesItems.js";
 import CheckBoxesSize from "../CheckBoxes/CheckBoxesSize.js";
 import CheckBoxesStairs from "../CheckBoxes/CheckBoxesStairs.js";
 
 
-
-
-
-
-
-const FormOne = (props)=> {
+const FormTwo = (props)=> {
 	
 	return <div align="center">
       <Card>
@@ -42,4 +36,4 @@ const FormOne = (props)=> {
   
 }
 
-export default FormOne;
+export default FormTwo;

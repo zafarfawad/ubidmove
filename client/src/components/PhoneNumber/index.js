@@ -11,21 +11,18 @@ const PhoneNumber = (props)=> {
 
    const selectedOptionsStyles = {
   
-    width: "350px",
+//     width: "350px",
     fontSize: "30px",
     fontsize: "30px",
     padding: "45px",
-    width: "167%",
+    width: "150.5%",
     marginleft: "inherit",
     borderradius: "0px"
       
 
     };
 
-    const buttonStyle = {
-          borderradius: "50px"
 
-    }
 	
 	return <div >
       {/* <ReactPhoneInput defaultCountry={"us"} value={props.phoneValue} onChange={props.handleChange} /> */}

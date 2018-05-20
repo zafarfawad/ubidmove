@@ -15,21 +15,6 @@ const SignUp = (props)=> {
       <div className="signUpTitle">
         <h1>SIGN UP</h1>
         <Link to="/signin">Go to sign in</Link>
-
-        {/* <Paper zDepth={2}>
-          <TextField hintText="Company name" value={props.companyName} onChange={props.handleChange} style={style} underlineShow={false} />
-          <Divider />
-          <TextField hintText="Company Address" value={props.companyAddress} onChange={props.handleChange} style={style} underlineShow={false} />
-          <Divider />
-          <TextField hintText="Email" value={props.username} onChange={props.handleChange} style={style} underlineShow={false} />
-          <Divider />
-          <TextField hintText="Password" value={props.password} onChange={props.handleChange} style={style} underlineShow={false} />
-          <Divider />
-          <TextField hintText="Confirm Password" value={props.confirmPassword} onChange={props.handleChange} style={style} underlineShow={false} />
-          <Divider />
-          <TextField hintText="Zipcode" value={props.zipcode} onChange={props.handleChange} style={style} underlineShow={false} />
-          <Divider />
-        </Paper> */}
         <form>
           <label>Company Name </label>
           <br />

@@ -65,15 +65,15 @@ class NavBar extends Component {
               </Link>
             ) : (
               <div>
-              {/* <Link to="/signIn">
+              <Link to="/signIn">
                 <MenuItem value={1} primaryText="Already a Mover?" />
-              </Link> */}
+              </Link>
                <Link to="/">
                 <MenuItem value={2} primaryText="Schedule a Move" />
               </Link>
-              {/* <Link to="/signUp">
+              <Link to="/signUp">
                 <MenuItem value={3} primaryText="Want to become a Mover?" />
-              </Link> */}
+              </Link>
               </div>
             )}
 

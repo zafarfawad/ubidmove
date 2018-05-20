@@ -4,15 +4,8 @@ import DatePicker1 from "../DatePicker";
 import TimePicker1 from "../HomeForm/TimePicker";
 import { Card, CardTitle } from 'material-ui/Card';
 
-
-
-
-
-
-
-
 const FormOne = (props)=> {
-	
+
 	return <div align="center">
       <Card>
         <CardTitle title="Choose your moving Date" />
@@ -21,7 +14,7 @@ const FormOne = (props)=> {
 
         <Row>
           <Col s={8} m={8} l={6} offset="m2 l3">
-            <Input s={8} label="From Address" name="fromAddress" value={props.fromAddress} onChange={props.handleChange} />
+            <Input s={8} label="From Address" name="fromAddress" value={props.fromAddress} onChange={props.handleChange} required />
           </Col>
         </Row>
         <Row />

@@ -48,11 +48,11 @@ export default class checkBoxItems extends Component {
             {this.menuItems(values)}
           </SelectField>
         </div>
-        <div>
+        {/* <div>
           <ul>
             <li>{this.props.value}</li>
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   }

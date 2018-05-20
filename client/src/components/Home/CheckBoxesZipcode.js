@@ -49,11 +49,11 @@ export default class CheckBoxesZipCode extends Component {
             {this.menuItems(values)}
           </SelectField>
         </div>
-        <div>
+        {/* <div>
           <ul>
             <li>{this.props.value}</li>
           </ul>
-        </div>
+        </div> */}
       </div>
     );
   }
